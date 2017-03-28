@@ -1,0 +1,43 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    int m,n,i,j,k,fe,output=0,grp;
+    cin>>n;
+    cin>>m;
+    int ar[10000];
+    for(i=0;i<10000;i++){ar[i] = 0;}
+
+    for(i=0;i<m;i++){
+        cin>>fe;
+        for(j=0;j<fe;j++){
+            cin>>ar[j];
+        }
+
+        grp = -1;
+        for(j=0;j<fe;j++){
+            for(k=0;k<fe;k++){
+                if(ar[k]+ar[j]==0){
+                    grp = 0;
+                    break;
+                }
+            }
+            if(grp==0)
+                break;
+        }
+        if(grp==-1){
+            if(output==0)
+                output = -1;
+        }
+    }
+
+    if(output==-1)
+        cout<<"YES";
+    else
+        cout <<"NO";
+
+    return 0;
+}
