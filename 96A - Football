@@ -1,0 +1,60 @@
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    bool dan = false;
+    string pos;
+    int i,j,l;
+    cin>>pos;
+
+    l = pos.length();
+    char posAr[l];
+
+    for(i=0;i<l;i++){
+        posAr[i] = pos.at(i);
+    }
+
+    for(i=0;i<l;i++){
+        if(i <= l-6 && posAr[i] == '1'){
+            for(j=i+1;j<i+7;j++){
+                if(posAr[j]=='1'){
+                    dan = true;
+                }
+                else{
+                  dan = false;
+                  break;
+                }
+            }
+            if(dan==true){
+                cout<<"YES";
+                return 0;
+            }
+        }
+
+
+        if(posAr[i] == '0'){
+            for(j=i+1;j<i+7;j++){
+                if(posAr[j]=='0'){
+                    dan = true;
+                }
+                else{
+                  dan = false;
+                  break;
+                }
+            }
+            if(dan==true){
+                cout<<"YES";
+                return 0;
+            }
+        }
+
+
+    }
+
+    if(dan==false)
+        cout<<"NO";
+
+    return 0;
+}
