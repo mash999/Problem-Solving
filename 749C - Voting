@@ -1,0 +1,72 @@
+
+    #include <iostream>
+    #include <queue>
+    using namespace std;
+
+
+    bool myFunc(char arr[],long int n){
+        long int i = 0;
+        bool foundD = false;
+        bool foundR = false;
+        for(i=0;i<n;i++){
+            if(arr[i]=='D')
+                foundD = true;
+        }
+
+        if(foundD==true){
+            for(i=0;i<n;i++){
+                if(arr[i]=='R')
+                    foundR = true;
+            }
+        }
+
+        if(foundD==true && foundR==true)
+            return true;
+        else
+            return false;
+
+    }
+
+    int main()
+    {
+        long int i,n;
+        char c,val;
+        bool b=true;
+        queue<char> q;
+
+        string s;
+        cin>>n;
+        cin>>s;
+        char votes[n];
+
+        for(i=0;i<s.length();i++){
+            c =  s.at(i);
+            votes[i] = c;
+        }
+
+        i = 0;
+        while(b == true){
+            for(i = 0;i<n;i++){
+                if(votes[i]=='D' || votes[i]=='R'){
+                    c = votes[i];
+                    if(q.empty()==true || q.front()==c){
+                        q.push(c);
+                        val = q.front();
+
+                    }
+                    else{
+                        val = q.front();
+                        q.pop();
+                        votes[i]='U';
+                    }
+                }
+            }
+
+            b = myFunc(votes,n);
+
+        }
+
+        cout<<val;
+
+        return 0;
+    }
