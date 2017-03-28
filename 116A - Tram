@@ -1,0 +1,34 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n,i,j,k,max=0,sum=0;
+    cin>>n;
+    int val[2*n];
+
+    for(i=0;i<2*n;i++){
+        cin>>val[i];
+    }
+
+    j = 0; k = 1;
+    for(i=0;i<n;i++){
+        if(i==n-1){
+            sum = sum-val[j];
+        }
+        else {
+            sum = sum-val[j];
+            sum = sum+val[k];
+        }
+
+        if(sum>max)
+            max = sum;
+
+        j = j+2;
+        k = k+2;
+
+    }
+    cout<<max;
+    return 0;
+}
