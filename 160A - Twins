@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int i=0,n,sum=0,amount=0,a,cn=0;
+    cin>>n;
+    int coins[n];
+    while(i<n){
+        cin>>a;
+        coins[i] = a;
+        sum = sum+a;
+        i++;
+    }
+
+
+    int c,d,swap;
+    for (c = 0 ; c < ( n - 1 ); c++){
+        for (d = 0 ; d < n - c - 1; d++){
+            if (coins[d] < coins[d+1]) {
+                swap       = coins[d];
+                coins[d]   = coins[d+1];
+                coins[d+1] = swap;
+            }
+        }
+    }
+
+
+
+
+    i=0;
+    while(amount<=sum && i<n){
+        amount = amount+coins[i];
+        sum = sum - coins[i];
+        cn++;
+        i++;
+    }
+    cout<<cn;
+    return 0;
+}
