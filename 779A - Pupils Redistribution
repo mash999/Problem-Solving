@@ -1,0 +1,47 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n,in,i,div=0,val=0,sum=0;
+    int grp1[5]={0,0,0,0,0};
+    int grp2[5]={0,0,0,0,0};
+    bool sorted=true;
+
+    cin>>n;
+    for(i=0;i<n;i++){
+        cin>>in;
+        grp1[in-1] = grp1[in-1]+1;
+    }
+
+    for(i=0;i<n;i++){
+        cin>>in;
+        grp2[in-1] = grp2[in-1]+1;
+    }
+
+
+
+
+
+    for(i=0;i<5;i++){
+        val = grp1[i]-grp2[i];
+        if(val<0){
+            val = -(val);
+        }
+        if(val%2==0){
+            val = val/2;
+            sum = sum+val;
+        }
+        else{
+            cout<<"-1";
+            return 0;
+        }
+    }
+
+
+        cout<<sum/2;
+
+
+    return 0;
+}
