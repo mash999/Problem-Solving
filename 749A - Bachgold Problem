@@ -1,0 +1,38 @@
+
+#include <stdio.h>
+int main(){
+
+    long int input,i,get2s;
+
+    scanf("%ld",&input);
+
+    if(input<2 || input>100000){
+        printf("Invalid Input. Range Must Be From 2 to 100000");
+    }
+
+    else {
+
+        if(input%2==0){
+            printf("%ld\n",input/2);
+            for(i = 0; i < input/2; i++){
+                printf("2 ");
+            }
+        }
+
+        else{
+            get2s = input - 3;
+            printf("%ld \n",(get2s/2)+1);
+            for(i = 0; i < get2s/2; i++){
+                printf("2 ");
+            }
+            printf("3");
+
+        }
+
+    }
+
+    printf("\n\n");
+
+    return 0;
+}
+
