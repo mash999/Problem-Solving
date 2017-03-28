@@ -1,0 +1,24 @@
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int i,n,f,c=0,sum;
+    cin>>n;
+
+    for(i=0;i<n;i++){
+        sum = 0;
+        cin>>f;
+        sum = sum+f;
+        cin>>f;
+        sum = sum+f;
+        cin>>f;
+        sum = sum+f;
+        if(sum>1)
+            c++;
+    }
+
+    cout<<c;
+    return 0;
+}
