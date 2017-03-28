@@ -1,0 +1,36 @@
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+    string names[50] = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","Ab","Ac","Ad","Ae","Af","Ag","Ah","Ai","Aj","Ak","Al","Am","An","Ao","Ap","Aq","Ar","As","At","Au","Av","Aw","Ax","Ay"};
+    int n,k,i;
+
+
+    cin>>n;cin>>k;
+    string ng[n];
+    for(i=0;i<n;i++){
+        ng[i] = names[i];
+    }
+
+
+    int gn = n-k+1;
+    string gs;
+    for(i=0;i<gn;i++){
+        cin>>gs;
+        if(gs=="NO"){
+            ng[i+k-1] = ng[i];
+        }
+    }
+
+
+    for(i=0;i<n;i++){
+       cout<<ng[i]<<" ";
+    }
+
+
+    return 0;
+}
