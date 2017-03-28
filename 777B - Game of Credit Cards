@@ -1,0 +1,80 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+
+int main()
+{
+   		int n,bsc=0,j,mflick=0,i=0;
+	    cin>>n;
+	    string s1,s2;
+	    int sc[n];
+	    int sc2[n];
+	    int mc[n];
+	    int mc2[n];
+	    int mc3[n];
+	    char c;
+
+	    cin>>s1;
+	    for(i=0;i<n;i++){
+	        c = s1.at(i);
+	        sc[i] = c-'0';
+	        sc2[i] = c-'0';
+	    }
+
+	    cin>>s2;
+	    for(i=0;i<n;i++){
+	    	c = s2.at(i);
+	        mc[i] = c-'0';
+	        mc2[i] = c-'0';
+	        mc3[i] = c-'0';
+	    }
+
+
+	    for(i=0;i<n;i++){
+            sort(mc2,mc2+n);
+            for(j=0;j<n;j++){
+                if(mc2[j]!=-1 && sc2[i]==mc2[j]){
+                    mc2[j]=-1;
+                    sc2[i] = -1;
+                    bsc++;
+                    break;
+                }
+            }
+	    }
+
+
+
+	    for(i=0;i<n;i++){
+            sort(mc2,mc2+n);
+            for(j=0;j<n;j++){
+                if(mc2[j]!=-1 && sc2[i]!=-1 && mc2[j]>sc2[i]){
+                    mc2[j]=-1;
+                    bsc++;
+                    break;
+                }
+            }
+	    }
+
+
+
+	    for(i=0;i<n;i++){
+	    	sort(mc,mc + n);
+
+	    	for(j=0;j<n;j++){
+	    		if(mc[j]>sc[i]){
+	    			mc[j] = -1;
+	    			mflick++;
+	    			break;
+	    		}
+	    	}
+	    }
+
+
+        cout<<n-bsc<<endl;
+        cout<<mflick;
+
+
+    return 0;
+}
