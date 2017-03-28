@@ -1,0 +1,106 @@
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    long int i,n,in,one=0,two=0,three=0,four=0,tn=0,tmp=0;
+    cin>>n;
+
+    for(i=0;i<n;i++){
+        cin>>in;
+        if(in==1)
+            one++;
+
+        else if(in==2)
+            two++;
+
+        else if(in==3)
+            three++;
+
+        else if(in==4)
+            four++;
+    }
+
+    if(four>0){
+        tn = four;
+        four = 0;
+    }
+
+    if(three>0){
+        if(one==0){
+            tn = tn+three;
+            three = 0;
+            one = 0;
+        }
+        else if(one>0){
+            if(three>one){
+                tn = tn+three;
+                three = 0;
+                one = three-one;
+            }
+            else if(one>three){
+                tn = tn+three;
+                one = one-three;
+                three = 0;
+            }
+            else if(one==three){
+                tn = tn+three;
+                one = 0;
+                three = 0;
+            }
+        }
+    }
+
+
+    if(two>0){
+        if(two%2==0){
+            tmp = (long int)two/2;
+            tn = tn+tmp;
+            two = 0;
+        }
+        else if(two%2!=0){
+            tmp = (long int)two/2;
+            tn = tn+tmp;
+            two = 1;
+            if(one>1){
+                one = one-2;
+                two = 0;
+                tn = tn+1;
+            }
+            else{
+                tn = tn+1;
+                one = 0;
+                two = 0;
+            }
+        }
+    }
+
+
+    if(one>0){
+        if(one<=4){
+            tn = tn+1;
+            one = 0;
+        }
+        else {
+            if(one%4==0){
+                tmp = (long int)one/4;
+                tn = tn+tmp;
+                one = 0;
+            }
+            else {
+                tmp = (long int)one/4;
+                tn = tn+tmp;
+                tn = tn+1;
+                one = 0;
+            }
+        }
+    }
+
+
+
+    cout<<tn;
+
+
+    return 0;
+}
