@@ -1,0 +1,44 @@
+
+#include <iostream>
+using namespace std;
+
+char dictionary[5] = {'h','e','l','l','o'};
+int main()
+{
+    int i,dt=0,j;
+    string s;
+    char t;
+    bool keepGoing = false;
+    cin>>s;
+
+    for(i=0;i<s.length();i++){
+        if(s.at(i)=='h')
+            break;
+    }
+
+
+    t = dictionary[dt];
+    for(i=i;i<s.length();i++){
+        if(s.at(i)==t){
+            dt++;
+            t=dictionary[dt];
+            keepGoing = true;
+            if(dt==5)
+                break;
+        }
+        else if(s.at(i)==dictionary[dt-1]){
+            keepGoing = true;
+        }
+        else {
+            keepGoing = false;
+            break;
+        }
+    }
+
+    if(keepGoing==true)
+        cout<<"YES";
+    else
+        cout<<"NO";
+
+    return 0;
+}
