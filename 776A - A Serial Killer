@@ -1,0 +1,45 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    string p0,p00,p1,p2,p3,p4,survive1,survive2;
+    int i,j,n;
+
+
+    cin>>p1;
+    cin>>p2;
+    cin>>n;
+    string names[2*n];
+
+    p0 = p1;
+    p00 = p2;
+    j = 0;
+    for(i=0;i<n;i++) {
+        cin>>p3;
+        cin>>p4;
+        survive1 = p4;
+        if(p3.compare(p1)==0)
+            survive2 = p2;
+        else if(p3.compare(p2)==0)
+            survive2 = p1;
+
+        names[j] = survive1;
+        names[j+1] = survive2;
+        j=j+2;
+
+
+        p1 = survive1;
+        p2 = survive2;
+
+    }
+
+
+    cout<<p0 << " " << p00 <<endl;
+    for(i=0;i<2*n;i=i+2){
+        cout<<names[i]<<" " <<names[i+1]<<endl;
+    }
+
+    return 0;
+}
