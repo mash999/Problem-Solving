@@ -1,0 +1,24 @@
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+    long double n,m,a;
+    long double x1,y1;
+    long long int x2,y2;
+
+    cin>>n;
+    cin>>m;
+    cin>>a;
+
+    x1 = n/a;
+    x2 = ceil(x1);
+    y1 = m/a;
+    y2 = ceil(y1);
+
+    cout<<x2*y2<<endl;
+
+    return 0;
+}
