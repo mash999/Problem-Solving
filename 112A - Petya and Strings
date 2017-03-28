@@ -1,0 +1,44 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    string s1,s2;
+    char dictionary[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    char c1,c2;
+    cin>>s1;
+    cin>>s2;
+
+    int i,len,index,i1,i2;
+    len = s1.length();
+
+    for(i=0;i<len;i++){
+        c1 = s1.at(i);
+        c1 = tolower(c1);
+        c2 = s2.at(i);
+        c2 = tolower(c2);
+
+        for(index=0;index<26;index++){
+            if(dictionary[index]==c1)
+                i1 = index;
+            if(dictionary[index]==c2)
+                i2 = index;
+        }
+
+        if(i1!=i2){
+            if(i1>i2){
+                cout<<"1";
+                return 0;
+            }
+            else if(i2>i1){
+                cout<<"-1";
+                return 0;
+            }
+        }
+    }
+
+    cout<<"0";
+
+    return 0;
+}
