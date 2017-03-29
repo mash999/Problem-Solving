@@ -1,0 +1,52 @@
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int i,j,n,k,l,x,index,max,capacity,remaining,stepSize;
+    cin>>n;cin>>k;
+    int steps[k];
+    int list[n];
+    for(i=0;i<k;i++){
+        cin>>steps[i];
+    }
+    for(i=0;i<n;i++){
+        list[i] = i+1;
+    }
+
+    max = n-1;
+    l = 0;
+    for(i=0;i<k;i++){
+        x = l+steps[i];
+        if(x>max){
+            capacity = max+1;
+            remaining = max-l;
+            stepSize = steps[i]-remaining;
+            if(stepSize%capacity==0){
+                index = max;
+            }
+            else{
+                index = stepSize%capacity;
+                index--;
+            }
+        }
+        else{
+            index = x;
+        }
+
+        if(index==max)
+            l = 0;
+        else
+            l = index;
+
+        cout<<list[index]<<" ";
+        for(j=index;j<max;j++){
+            list[j] = list[j+1];
+        }
+        max--;
+
+    }
+
+    return 0;
+}
