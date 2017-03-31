@@ -1,0 +1,97 @@
+
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+int main()
+{
+    unsigned long long int int1,nmax,tmp;
+    int i,size,tmpi,j,k,sum,add,dmax;
+    char * p;
+    string input,tmps;
+    cin>>input;
+    size = input.length();
+
+    if(size==1){
+        cout<<input;
+        return 0;
+    }
+
+    char s[size];
+    char tmpc;
+    int digitSum[size+1];
+    unsigned long long int numbers[size+1];
+    for(i=0;i<size;i++){
+        s[i] = input.at(i);
+    }
+
+    for(i=0;i<size;i++){
+        tmps = input;
+        for(j=0;j<i-1;j++){
+            tmps.at(j) = input.at(j);
+        }
+        tmpi = tmps.at(i) - '0';
+        if(tmpi!=0)
+            tmpi--;
+        tmpc = '0' + tmpi;
+        tmps.at(i) = tmpc;
+
+        for(k=i+1;k<size;k++){
+            tmps.at(k) = '9';
+        }
+
+        for(j=0;j<size;j++){
+            s[j] = tmps.at(j);
+        }
+        int1 = strtoull(s,&p, 10);
+        numbers[i] = int1;
+
+    }
+
+    for(j=0;j<size;j++){
+        s[j] = input.at(j);
+    }
+    int1 = strtoull(s,&p, 10);
+    numbers[size] = int1;
+
+    for(i=0;i<=size;i++){
+        tmp = numbers[i];
+        sum = 0;
+        while(tmp>0){
+            add = tmp%10;
+            sum = sum+add;
+            tmp = tmp/10;
+        }
+        digitSum[i] = sum;
+    }
+
+    tmp = numbers[size];
+    sum = 0;
+    while(tmp>0){
+        add = tmp%10;
+        sum = sum+add;
+        tmp = tmp/10;
+    }
+    digitSum[size] = sum;
+
+    dmax = digitSum[0];
+    nmax = numbers[0];
+    for(i=1;i<=size;i++){
+        if(digitSum[i]>=dmax){
+            if(digitSum[i]>dmax){
+                dmax = digitSum[i];
+                nmax = numbers[i];
+            }
+            else if(digitSum[i]==dmax){
+                if(numbers[i]>=nmax){
+                    nmax = numbers[i];
+                    dmax = digitSum[i];
+                }
+            }
+        }
+    }
+
+    cout<<nmax;
+
+    return 0;
+}
