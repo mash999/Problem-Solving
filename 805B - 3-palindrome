@@ -1,0 +1,29 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    long long int i,n;
+    char lastPrint='b';
+    cin>>n;
+
+    for(i=1;i<=n/2;i++){
+        if(i%2!=0){
+            cout<<"aa";
+            lastPrint = 'a';
+        }
+        else{
+            cout<<"bb";
+            lastPrint = 'b';
+        }
+    }
+    if(n%2!=0){
+        if(lastPrint=='a')
+            cout<<'b';
+        else
+            cout<<'a';
+    }
+
+    return 0;
+}
