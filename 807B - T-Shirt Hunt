@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+bool isIn(int n,int p){
+    int i;
+    n = (n/50)%475;
+    for(i=0;i<25;i++){
+        n = (n*96+42)%475;
+        //n = n+26;
+        if(n+26==p){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+int main(){
+
+    int p,x,y,t;
+    bool found = false;
+    cin>>p;cin>>x;cin>>y;
+    t = x;
+
+    while(t>=y){
+        found = isIn(t,p);
+        if(found){
+            cout<<"0";
+            return 0;
+        }
+        t = t-50;
+    }
+    t = x;
+    while(!found){
+        if(t>=y){
+            found = isIn(t,p);
+            if(found){
+                break;
+            }
+        }
+        t = t+50;
+    }
+    if((t-x)%100==0)
+        cout<<(t-x)/100;
+    else
+        cout<<((t-x)/100)+1;
+
+    return 0;
+
+}
+
