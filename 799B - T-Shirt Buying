@@ -1,0 +1,149 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    long long int i,n,m,oneI=0,twoI=0,threeI=0,oneTwoI=0,twoThreeI=0,oneThreeI=0,oneTwoP=0,twoThreeP=0,oneThreeP=0,oneP=0,twoP=0,threeP=0;
+    cin>>n;
+    long long int p[n],one[n],two[n],three[n],oneTwo[n],oneThree[n],twoThree[n],a[n],b[n];
+
+    for(i=0;i<n;i++){
+        cin>>p[i];
+        oneThree[i] = 99999999999;
+        oneTwo[i] = 99999999999;
+        twoThree[i] = 99999999999;
+        one[i] = 99999999999;
+        two[i] = 99999999999;
+        three[i] = 99999999999;
+    }
+    for(i=0;i<n;i++){cin>>a[i];}
+    for(i=0;i<n;i++){cin>>b[i];}
+    cin>>m;
+    long long int c[m];
+    for(i=0;i<m;i++){cin>>c[i];}
+
+
+    for(i=0;i<n;i++){
+        if(a[i]==1){
+
+            if(b[i]==1){
+                one[oneI] = p[i];
+                oneI++;
+            }
+            else if(b[i]==2){
+                oneTwo[oneTwoI] = p[i];
+                oneTwoI++;
+            }
+            else{
+                oneThree[oneThreeI] = p[i];
+                oneThreeI++;
+            }
+        }
+
+        else if(a[i]==2){
+
+            if(b[i]==2){
+                two[twoI] = p[i];
+                twoI++;
+            }
+            else if(b[i]==1){
+                oneTwo[oneTwoI] = p[i];
+                oneTwoI++;
+            }
+            else{
+                twoThree[twoThreeI] = p[i];
+                twoThreeI++;
+            }
+        }
+
+        else if(a[i]==3){
+
+            if(b[i]==3){
+                three[threeI] = p[i];
+                threeI++;
+            }
+            else if(b[i]==1){
+                oneThree[oneThreeI] = p[i];
+                oneThreeI++;
+            }
+            else{
+                twoThree[twoThreeI] = p[i];
+                twoThreeI++;
+            }
+        }
+    }
+
+    sort(one,one+n);
+    sort(two,two+n);
+    sort(three,three+n);
+    sort(oneTwo,oneTwo+n);
+    sort(oneThree,oneThree+n);
+    sort(twoThree,twoThree+n);
+
+
+    for(i=0;i<m;i++){
+        if(c[i]==1){
+            if(oneP>=oneI && oneTwoP>=oneTwoI && oneThreeP>=oneThreeI)
+                cout<<"-1 ";
+
+            else{
+                if(one[oneP]<oneTwo[oneTwoP] && one[oneP]<oneThree[oneThreeP]){
+                    cout<<one[oneP]<<" ";
+                    oneP++;
+                }
+                else if(oneTwo[oneTwoP]<oneThree[oneThreeP] && oneTwo[oneTwoP]<one[oneP]){
+                    cout<<oneTwo[oneTwoP]<<" ";
+                    oneTwoP++;
+                }
+                else if(oneThree[oneThreeP]<oneTwo[oneTwoP] && oneThree[oneThreeP]<one[oneP]){
+                    cout<<oneThree[oneThreeP]<<" ";
+                    oneThreeP++;
+                }
+            }
+        }
+
+        else if(c[i]==2){
+            if(twoP>=twoI && oneTwoP>=oneTwoI && twoThreeP>=twoThreeI)
+                cout<<"-1 ";
+
+            else{
+                if(two[twoP]<oneTwo[oneTwoP] && two[twoP]<twoThree[twoThreeP]){
+                    cout<<two[twoP]<<" ";
+                    twoP++;
+                }
+                else if(oneTwo[oneTwoP]<two[twoP] && oneTwo[oneTwoP]<twoThree[twoThreeP]){
+                    cout<<oneTwo[oneTwoP]<<" ";
+                    oneTwoP++;
+                }
+                else if(twoThree[twoThreeP]<two[twoP] && twoThree[twoThreeP]<oneTwo[oneTwoP]){
+                    cout<<twoThree[twoThreeP]<<" ";
+                    twoThreeP++;
+                }
+            }
+        }
+
+        else if(c[i]==3){
+            if(threeP>=threeI && oneThreeP>=oneThreeI && twoThreeP>=twoThreeI)
+                cout<<"-1 ";
+
+            else{
+                if(three[threeP]<oneThree[oneThreeP] && three[threeP]<twoThree[twoThreeP]){
+                    cout<<three[threeP]<<" ";
+                    threeP++;
+                }
+                else if(oneThree[oneThreeP]<three[threeP] && oneThree[oneThreeP]<twoThree[twoThreeP]){
+                    cout<<oneThree[oneThreeP]<<" ";
+                    oneThreeP++;
+                }
+                else if(twoThree[twoThreeP]<three[threeP] && twoThree[twoThreeP]<oneThree[oneThreeP]){
+                    cout<<twoThree[twoThreeP]<<" ";
+                    twoThreeP++;
+                }
+            }
+        }
+
+    }
+
+    return 0;
+}
