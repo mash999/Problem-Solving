@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    long int i,n,min=1000001,tmp;
+    cin>>n;
+    if(n==1)
+        cout<<"4";
+    else{
+        for(i=1;i<=n/2;i++){
+            tmp = ((n/i)*2) + (i*2);
+            if(n%i!=0){
+                tmp += 2;
+            }
+            if(tmp<min){
+                min = tmp;
+            }
+        }
+        cout <<min;
+    }
+    return 0;
+}
