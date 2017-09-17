@@ -1,0 +1,22 @@
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int i,k;
+    long int r,max=-1;
+    cin>>k;
+    for(i=0;i<k;i++){
+        cin>>r;
+        if(r>max){
+            max = r;
+        }
+    }
+    if(max>25)
+        cout<<max - 25;
+    else
+        cout<<"0";
+
+    return 0;
+}
