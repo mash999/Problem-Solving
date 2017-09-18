@@ -1,0 +1,20 @@
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    long long int n,k;
+    cin>>n; cin>>k;
+    if(k==0 || n-k==0)
+        cout<<"0 ";
+    else
+        cout<<"1 ";
+
+    if((2*k)>n-k)
+        cout<<n-k;
+    else
+        cout<<2*k;
+
+    return 0;
+}
