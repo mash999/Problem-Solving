@@ -1,1 +1,1 @@
-The folder contains all the problems i have solved on codeforces.com
+The repository contains all the problems I've solved on codeforces.com
